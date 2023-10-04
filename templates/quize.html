@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <div id="timer">Time left: <span id="countdown"></span></div>
+    <h1>Question {{ index + 1 }}</h1>
+    <p>{{ question.question }}</p>
+    <form method="POST" action="/check_answer">
+        {% for i in range(question.options|length) %}
+        <input type="radio" name="answer" value="{{ i + 1 }}" required>{{ question.options[i] }}<br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Next">
+        
+    </form>
+    <script>
+        // JavaScript code for the countdown timer
+        var countdownElement = document.getElementById('countdown');
+        var timeLeft = 60; // Set the quiz duration in seconds
+    
+        function updateTimer() {
+            if (timeLeft > 0) {
+                countdownElement.textContent = timeLeft + ' seconds';
+                timeLeft -= 1;
+            } else {
+                // Time's up, submit the quiz automatically
+                document.querySelector('form').submit();
+            }
+        }
+    
+        // Update the timer every second
+        var timerInterval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

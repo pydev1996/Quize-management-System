@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <p>Click the button below to start the quiz:</p>
+    <form method="GET" action="/quiz">
+        <button type="submit">Start Quiz</button>
+    </form>
+</body>
+</html>
