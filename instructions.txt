@@ -1,0 +1,11 @@
+Steps for running the project
+1.First virtual Environment for the project
+2.Next install the requirements by:
+   pip install -r requirements.txt    
+3.Then run below command in terminal
+   python app.py
+
+
+Login credentails for Admin:
+   username: Admin
+   password: Admin@111
