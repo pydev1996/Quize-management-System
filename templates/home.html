@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Management System</title>
+    <style>
+         body {
+            background-image: url('/static/images/bg3.jpg'); /* Specify your background image URL */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Adjust the opacity as needed */
+            backdrop-filter: blur(1px); /* Adjust the blur amount as needed */
+            z-index: -1; /* Place it behind the content */
+        }
+
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 200px);
+        }
+
+        .button {
+            background-color: #f01f99;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Quiz Management System</h1>
+    </div>
+    <div class="button-container">
+        <button class="button" onclick="location.href='/login'">Login as User</button>
+        <button class="button" onclick="location.href='/adminlogin'">Login as Admin</button>
+    </div>
+</body>
+</html>

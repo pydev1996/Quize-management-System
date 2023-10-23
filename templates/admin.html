@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Management</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: transparent; /* Remove background image */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header {
+            background-color: rgba(238, 45, 109, 0.8);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 200px);
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        video {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .timer-toggle {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="/static/images/bg1.mp4" type="video/webm">
+       
+        <!-- Add additional source elements for different video formats if needed -->
+    </video>
+    <div class="header">
+        <h1>Quize Management System</h1>
+    </div>
+    <div class="button-container">
+        <button onclick="location.href='/add_question_form'">Add Questions</button>
+        <button onclick="location.href='/show_scores'">Show Scores</button>
+        <button onclick="location.href='/show_users'">Show Users</button>
+        <!-- Add more buttons for other actions -->
+    </div>
+    <form method="POST" action="/update_timer_status">
+        <div class="timer-toggle">
+            <label for="enableTimer">Enable Timer:</label>
+            <input type="checkbox" id="enableTimer" name="enableTimer">
+        </div>
+        <button type="submit">Save</button>
+    </form>
+    
+   
+        
+</body>
+</html>

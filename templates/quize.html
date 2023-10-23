@@ -2,19 +2,85 @@
 <html>
 <head>
     <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        #timer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            color: #007BFF;
+        }
+
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div id="timer">Time left: <span id="countdown"></span></div>
-    <h1>Question {{ index + 1 }}</h1>
-    <p>{{ question.question }}</p>
-    <form method="POST" action="/check_answer">
-        {% for i in range(question.options|length) %}
-        <input type="radio" name="answer" value="{{ i + 1 }}" required>{{ question.options[i] }}<br>
-        {% endfor %}
+    <div id="timer">
+        {% if timer_status.enabled %}
+            Time left: <span id="countdown"></span>
+        {% else %}
+            Timer is disabled
+        {% endif %}
+    </div>
+    <div class="quiz-container">
+        <h1>Question {{ index + 1 }}</h1>
+        <p>{{ question.question_text }}</p>
+        <form method="POST" action="/check_answer">
+            {% for option in options %}
+        <input type="radio" name="answer" value="{{ loop.index }}" required>{{ option }}
         <br>
-        <input type="submit" value="Next">
-        
-    </form>
+    {% endfor %}
+            <br>
+            <input type="submit" value="Next">
+        </form>
+    </div>
     <script>
         // JavaScript code for the countdown timer
         var countdownElement = document.getElementById('countdown');

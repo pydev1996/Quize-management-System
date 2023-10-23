@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 50px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"], button[type="button"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="button"]:hover {
+            background-color: #2100b3;
+           
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Question</h1>
+        <form method="POST" action="/add_question">
+            <label for="question_text">Question:</label>
+            <input type="text" id="question_text" name="question_text" required>
+            
+            <label for="option1">Option 1:</label>
+            <input type="text" id="option1" name="option1" required>
+            
+            <label for="option2">Option 2:</label>
+            <input type="text" id="option2" name= "option2" required>
+            
+            <label for="option3">Option 3:</label>
+            <input type="text" id="option3" name="option3" required>
+            
+            <label for="correct_option">Correct Option (1, 2, or 3):</label>
+            <input type="number" id="correct_option" name="correct_option" required>
+            
+            <button type="submit">Add Question</button>
+        </form>
+        <div class="button-container">
+            <button type="button" onclick="location.href='/questions'">Show Questions Data</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Question</h1>
+    <form method="POST" action="/update_question/{{ question.id }}">
+        <div>
+            <label for="question_text">Question:</label>
+            <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}" required>
+        </div>
+        <div>
+            <label for="option1">Option 1:</label>
+            <input type="text" id="option1" name="option1" value="{{ question.option1 }}" required>
+        </div>
+        <div>
+            <label for="option2">Option 2:</label>
+            <input type="text" id="option2" name="option2" value="{{ question.option2 }}" required>
+        </div>
+        <div>
+            <label for="option3">Option 3:</label>
+            <input type="text" id="option3" name="option3" value="{{ question.option3 }}" required>
+        </div>
+        <div>
+            <label for="correct_option">Correct Option (1, 2, or 3):</label>
+            <input type="number" id="correct_option" name="correct_option" value="{{ question.correct_option }}" required>
+        </div>
+        <button type="submit">Update Question</button>
+    </form>
+    <button onclick="location.href='/questions'">Cancel</button>
+</body>
+</html>
