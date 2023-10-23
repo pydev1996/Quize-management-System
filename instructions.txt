@@ -8,4 +8,4 @@ Steps for running the project
 
 Login credentails for Admin:
    username: Admin
-   password: Admin@111
+   password: Admin111
