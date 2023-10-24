@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-
+import easygui
 app = Flask(__name__, template_folder='templates', static_url_path='/static')
 app.secret_key = '034c426c843d013262dd0d4292ba9d55'  # Replace with a strong secret key
 
@@ -46,6 +46,19 @@ def index():
         return render_template('quize.html', question=current_question, index=current_question_index,options=options,timer_status=timer_status)
     else:
         return render_template('result.html', score=score, total=current_question_index, username=session.get('username'))
+    
+from flask import request, jsonify
+
+@app.route('/get_timer', methods=['GET'])
+def get_timer():
+    timer = session.get('timer', 0)
+
+    # Decrease the timer by 1 second
+    if timer > 0:
+        timer -= 1
+        session['timer'] = timer
+
+    return jsonify(timer=timer)
 
 from flask import request, redirect, url_for
 
@@ -106,11 +119,18 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username, password=password).first()
+        #print(user)
         if user:
-            session['user_id'] = user.id
-            session['username'] = user.username
-            return redirect(url_for('user_dashboard'))
+            scr=Score.query.filter_by(user_id=user.id).first()
+            print(scr)
+            if scr:
+                easygui.msgbox('Quize already done for this user', 'error')
+            else:
+                session['user_id'] = user.id
+                session['username'] = user.username
+                return redirect(url_for('user_dashboard'))
         else:
+            easygui.msgbox("Invalid credentials. Please try again.")
             flash('Invalid credentials. Please try again.', 'error')
     return render_template('login.html')
 @app.route('/adminlogin', methods=['GET', 'POST'])
